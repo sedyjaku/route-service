@@ -6,9 +6,11 @@ import cz.sedy.router.model.domain.Country
 import cz.sedy.router.service.CountryService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
+@Profile("!test")
 class DefaultCountryService(
     private val gitHubUserContentClientApi: DefaultGitHubUserContentClientApi,
     private val countryMapper: CountryMapper

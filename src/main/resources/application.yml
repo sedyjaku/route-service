@@ -1,0 +1,3 @@
+strategy: bfs
+dfs:
+  strategy: shortest

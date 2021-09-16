@@ -6,10 +6,16 @@ import cz.sedy.router.model.domain.Route
 import cz.sedy.router.service.CountryService
 import cz.sedy.router.service.RouteService
 import kotlinx.coroutines.flow.toSet
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Service
 import kotlin.collections.ArrayDeque
 
 @Service
+@Primary
+@ConditionalOnProperty(name = ["strategy"], havingValue = "bfs")
 class BfsRouteService(
     private val countryService: CountryService
 ) : RouteService {

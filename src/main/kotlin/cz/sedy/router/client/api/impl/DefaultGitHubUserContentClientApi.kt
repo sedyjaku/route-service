@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import cz.sedy.router.client.api.GITHUB_COUNTRIES_URL
 import cz.sedy.router.client.api.GitHubUserContentClientApi
+import cz.sedy.router.model.client.CountryListReference
 import cz.sedy.router.model.client.CountryResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
@@ -22,7 +23,7 @@ class DefaultGitHubUserContentClientApi(
 ) : GitHubUserContentClientApi {
 
     override suspend fun getAllCountries() =
-            objectMapper.readValue(URL(GITHUB_COUNTRIES_URL), customReference()).asFlow()
+            objectMapper.readValue(URL(GITHUB_COUNTRIES_URL), CountryListReference()).asFlow()
+             }
 
-}
-    class customReference: TypeReference<List<CountryResponse>>()
+
